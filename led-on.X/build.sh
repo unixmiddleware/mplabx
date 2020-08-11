@@ -1,0 +1,58 @@
+XC8="/opt/microchip/xc8/v1.36/bin/xc8"  
+
+ERRFMT='--errformat=%f:%l: error: (%n) %s'
+WARNFMT='--warnformat=%f:%l: warning: (%n) %s'
+MSGFMT='--msgformat=%f:%l: advisory: (%n) %s'
+
+ERRFMT=""
+WARNFMT=""
+MSGFMT=""
+
+ASM="led-on.asm"
+
+ARGS="--chip=10F200"
+ARGS="${ARGS} -G -mdist/default/production/blink.X.production.map"
+ARGS="${ARGS} -DXPRJ_default=default"
+ARGS="${ARGS} --double=24"
+ARGS="${ARGS} --float=24"
+ARGS="${ARGS} --opt=+asm,"
+ARGS="${ARGS} +asmfile,"
+ARGS="${ARGS} -speed,"
+ARGS="${ARGS} +space,"
+ARGS="${ARGS} -debug"
+ARGS="${ARGS} --addrqual=ignore"
+ARGS="${ARGS} --mode=free"
+ARGS="${ARGS} -P"
+ARGS="${ARGS} -N255"
+ARGS="${ARGS} --warn=-3"
+ARGS="${ARGS} --asmlist"
+ARGS="${ARGS} --summary=default,"
+ARGS="${ARGS} -psect,"
+ARGS="${ARGS} -class,"
+ARGS="${ARGS} +mem,"
+ARGS="${ARGS} -hex,"
+ARGS="${ARGS} -file "
+ARGS="${ARGS} --output=default,"
+ARGS="${ARGS} -inhx032"
+ARGS="${ARGS} --runtime=default,"
+ARGS="${ARGS} +clear,"
+ARGS="${ARGS} +init,"
+ARGS="${ARGS} -keep,"
+ARGS="${ARGS} -no_startup,"
+ARGS="${ARGS} -osccal,"
+ARGS="${ARGS} -resetbits,"
+ARGS="${ARGS} -download,"
+ARGS="${ARGS} -stackcall,"
+ARGS="${ARGS} +clib "
+ARGS="${ARGS} --output=-mcof,"
+ARGS="${ARGS} +elf:multilocs"
+ARGS="${ARGS} --stack=compiled:auto"
+ARGS="${ARGS} ${ERRFMT}"
+ARGS="${ARGS} ${WARNFMT}"
+ARGS="${ARGS} ${MSGFMT}"
+ARGS="${ARGS} --memorysummary"
+ARGS="${ARGS} dist/default/production/memoryfile.xml"
+ARGS="${ARGS} -odist/default/production/blink.X.production.elf"
+
+echo ${XC8} ${ARGS}
+"/opt/microchip/xc8/v1.36/bin/xc8"  --chip=10F200 -G -mdist/default/production/blink.X.production.map  -DXPRJ_default=default    --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib --output=-mcof,+elf:multilocs --stack=compiled:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"      --memorysummary dist/default/production/memoryfile.xml -odist/default/production/blink.X.production.elf ${ASM}

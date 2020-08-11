@@ -1,0 +1,31 @@
+
+
+Microchip Technology PIC Macro Assembler V1.36 build -262312587 
+                                                                                                           Mon Aug 10 10:37:44 2020
+
+
+     1                           	processor	10F200
+     2                           	opt	pw 132
+     3                           
+     4                           ;list p=10F200
+     5  0000                     __CONFIG:	
+     6                           ; CONFIG
+     7                           
+     8  0000                     _WDT_OFF:	
+     9  0000                     	org	0
+    10  0000                     INIT:	
+    11                           
+    12                           ; ; We are initialising the microcontroller over the next 3 lines
+    13  0000  006                	tris	6	; Tri State ; moves what's in W into GPIO
+    14  0001  5C6                	bsf	6,6
+    15  0002                     LOOP:	
+    16                           
+    17                           ;
+    18  0002  A02                	goto	LOOP	; Do nothing other than keep running
+
+
+Microchip Technology PIC Macro Assembler V1.36 build -262312587 
+Symbol Table                                                                                               Mon Aug 10 10:37:44 2020
+
+                 GPIO 0006                   INIT 0000                   LOOP 0002               _WDT_OFF 0000  
+             __CONFIG 0000  
